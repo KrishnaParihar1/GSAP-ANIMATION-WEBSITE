@@ -1,9 +1,18 @@
 import React from 'react'
 import { cocktailLists, mockTailLists } from './constants/index.js'
+import { useGSAP } from '@gsap/react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const Cocktails = () => {
+  useGSAP(() => {
+    const parallaxTimeLine = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#cocktails',
+      }
+    })
+  })
   return (
-
     <section id="cocktails" className="noisy h-[100vh]">
       <img
         src="/images/cocktail-left-leaf.png"
@@ -18,7 +27,7 @@ const Cocktails = () => {
         className="absolute right-0 bottom-0"
       />
 
-      <div className="list flex">
+      <div className="list flex justify-between gap-16 max-w-6xl mx-auto px-6">
         <section className="popular">
           <h2 className="text-2xl font-semibold mb-4">Most popular cocktails</h2>
           <ul className="space-y-4">
